@@ -1,0 +1,51 @@
+class Main{
+
+	function void main(){
+		var Envelope env;//לתצוגה בהתחלה בבחירת צורה
+		var Phone phone;//לתצוגה בהתחלה בבחירת צורה
+		var int num;//מספר לפיו תיבחר צורה
+		var int counter;//מקבל את מספר הפעולות שבוצעו
+		var Envelope env1;//במידה ונבחרה מעטפה
+		var Phone phone1;//במידה ונבחר טלפון
+
+		let env = Envelope.new(230, 410, 320, 100, 190, 140);   
+		let phone = Phone.new(50, 150, 50, 210);   
+		let num= Keyboard.readInt("Enter 1 for envelope and 2 for phone");
+		do env.erase();
+		do phone.erase();
+		do env.dispose();
+		do phone.dispose();
+
+		if(num=1){			
+			let env1= Envelope.new(160, 340, 250, 100, 190, 140);
+			do Output.printString("1: Turn Up, ");
+			do Output.printString("2: Turn Dwon, ");
+			do Output.printString("3: Turn Right, ");
+			do Output.printString("4: Turn Left, ");
+			do Output.printString("5: Make biger, ");
+			do Output.printString("6: Make Smaller ");
+			let counter = env1.playGame();
+			do Output.printString("You chose envelope and did ");
+			do Output.printInt(counter);
+			do Output.printString(" actions\n");
+			do env1.dispose();
+		}
+
+		if(num=2){			
+			let phone1= Phone.new(200, 280, 75, 215);
+			do Output.printString("1: Turn Up, ");
+			do Output.printString("2: Turn Dwon, ");
+			do Output.printString("3: Turn Right, ");
+			do Output.printString("4: Turn Left, ");
+			do Output.printString("5: Make biger, ");
+			do Output.printString("6: Make Smaller ");
+			let counter = phone1.playGame();
+			do Output.printString("You chose phone and did ");
+			do Output.printInt(counter);
+			do Output.printString(" actions\n");
+			do phone1.dispose();
+		}			
+	
+		return;
+	}
+}

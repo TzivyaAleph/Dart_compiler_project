@@ -1,0 +1,148 @@
+
+class Envelope{
+	field int x1;
+    field int x2;
+    field int x3;
+	field int y1;
+    field int y2;
+    field int y3;
+    
+
+	constructor Envelope new(int a1, int a2, int a3, int b1, int b2, int b3){
+		let x1=a1;
+		let x2=a2;
+		let x3=a3;
+		let y1=b1;
+		let y2=b2;
+		let y3=b3;
+		
+		do Screen.setColor(true);
+		do Screen.drawLine(x1, y1, x1, y2);
+		do Screen.drawLine(x1, y1, x2, y1);
+		do Screen.drawLine(x2, y1, x2, y2);
+		do Screen.drawLine(x1, y2, x2, y2);
+		do Screen.drawLine(x1, y1, x3, y3);
+		do Screen.drawLine(x2, y1, x3, y3);
+
+		return this;
+	}
+	
+	method int playGame(){
+		var int num;
+		var int counter;
+		let num= Keyboard.readInt("enter num: ");
+		let counter = 0;
+		while(num > 0){
+			let counter = counter + 1;
+			if(num=1){	
+				do bringUp();
+			}
+			if(num=2){	
+				do bringDown();
+			}
+			if(num=3){	
+				do turnRight();
+			}
+			if(num=4){	
+				do turnLeft();
+			}
+			if(num=5){	
+				do makeBigger();
+			}
+			if(num=6){	
+				do makeSmaller();
+			}
+			let num= Keyboard.readInt("enter num: ");
+			
+		}
+		return counter;
+	}
+	
+	method void turnRight() {
+		do erase();
+		let x1 = x1 + 80;
+		let x2 = x2 + 80;
+		let x3 = x3 + 80;
+		do draw();
+		return;
+	}
+	
+	method void turnLeft() {
+		do erase();
+		let x1 = x1 - 80;
+		let x2 = x2 - 80;
+		let x3 = x3 - 80;
+		do draw();
+		return;
+	}
+	
+	method void bringUp() {
+		do erase();
+		let y1 = y1 - 60;
+		let y2 = y2 - 60;
+		let y3 = y3 - 60;
+		do draw();
+		return;
+	}
+	
+	method void bringDown() {
+		do erase();
+		let y1 = y1 + 60;
+		let y2 = y2 + 60;
+		let y3 = y3 + 60;
+		do draw();
+		return;
+	}
+	
+	method void makeBigger() {
+		do erase();
+		let x1 = x1 - 30;
+		let x2 = x2 + 30;
+		let y1 = y1 - 20;
+		let y2 = y2  + 20;
+		do draw();
+		return;
+	}
+	
+	method void makeSmaller() {
+		do erase();
+		let x1 = x1 + 35;
+		let x2 = x2 - 35;
+		let y1 = y1 + 20;
+		let y2 = y2  - 20;
+		do draw();
+		return;
+	}
+
+
+	method void erase() {
+		do Screen.setColor(false);
+		do Screen.drawLine(x1, y1, x1, y2);
+		do Screen.drawLine(x1, y1, x2, y1);
+		do Screen.drawLine(x2, y1, x2, y2);
+		do Screen.drawLine(x1, y2, x2, y2);
+		do Screen.drawLine(x1, y1, x3, y3);
+		do Screen.drawLine(x2, y1, x3, y3);
+		return;
+	}
+	
+	method void draw() {
+        do Screen.setColor(true);
+		do Screen.drawLine(x1, y1, x1, y2);
+		do Screen.drawLine(x1, y1, x2, y1);
+		do Screen.drawLine(x2, y1, x2, y2);
+		do Screen.drawLine(x1, y2, x2, y2);
+		do Screen.drawLine(x1, y1, x3, y3);
+		do Screen.drawLine(x2, y1, x3, y3);
+        return;
+    }
+	
+	
+	// destructor
+    method void dispose() {
+        do erase();
+        do Memory.deAlloc(this);
+        return;
+    }
+	
+}
