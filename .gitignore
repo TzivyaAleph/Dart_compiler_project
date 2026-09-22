@@ -1,0 +1,9 @@
+# Dart / pub generated files
+.dart_tool/
+.packages
+build/
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store

@@ -1,0 +1,9 @@
+name: project_2
+description: VM translator supporting program flow and function commands.
+version: 1.0.0
+
+environment:
+  sdk: '>=2.19.4 <3.0.0'
+
+dev_dependencies:
+  lints: ^2.0.0
